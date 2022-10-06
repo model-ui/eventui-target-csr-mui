@@ -6,7 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import AvatarComponent from './AvatarComponent';
 import { triggers, events, config } from './AvatarComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -41,9 +41,10 @@ export const AvatarBasic = (args) => {
     config: { options: args },
     schema: {}
   }
+
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <AvatarComponent {...props} />
     </div>
   );

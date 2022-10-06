@@ -8,7 +8,7 @@ import { TestTextLatin_SummaryArray, TestIconLatin_SummaryArray } from '../../te
 // components
 import { Tabs } from './Grid';
 import { triggers, events, config } from './TabsComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
@@ -45,7 +45,7 @@ export const Basic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Tabs {...props} />
     </div>
   );
@@ -65,7 +65,7 @@ export const BasicText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Tabs {...props} />
     </div>
   );
@@ -85,7 +85,7 @@ export const BasicIcon = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Tabs {...props} />
     </div>
   );

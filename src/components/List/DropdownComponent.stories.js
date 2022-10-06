@@ -6,7 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import { Dropdown } from './List';
 import { triggers, events, config } from './DropdownComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
@@ -40,7 +40,7 @@ export const Autocomplete = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Dropdown {...props} />
     </div>
   );

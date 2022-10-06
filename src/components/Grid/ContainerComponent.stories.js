@@ -8,7 +8,7 @@ import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
 // components
 import { Container } from './Grid';
 import { triggers, events, config } from './ContainerComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
@@ -47,7 +47,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Container {...props} />
     </div>
   );
@@ -69,7 +69,7 @@ export const BasicText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Container {...props} />
     </div>
   );

@@ -5,7 +5,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import { Card } from './Card';
 import { triggers, events, config } from './CardComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 export default {
   title: 'Components/Cards',
@@ -36,7 +36,7 @@ export const TitledCard = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Card  {...props} />
     </div>
   );
@@ -99,7 +99,7 @@ export const TitledCardWithActions = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Card  {...props} />
     </div>
   );
@@ -134,7 +134,7 @@ export const MediaCard = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Card  {...props} />
     </div>
   );

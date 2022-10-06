@@ -6,6 +6,8 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import { List } from './List';
 import { triggers, events, config } from './ListComponent'
+import { layout } from 'eventfull-core-runtime'
+
 /// Event addon
 export default {
   title: 'Components/List',
@@ -37,7 +39,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -74,7 +76,7 @@ export const BasicSubtitle = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -120,7 +122,7 @@ export const BasicAvatar = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -169,7 +171,7 @@ export const SecondaryButton = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <List  {...props} />
     </div>
   );

@@ -6,6 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import { DataGrid } from './Table';
 import { triggers, events, config } from './DataGridComponent'
+import { layout } from 'eventfull-core-runtime'
 
 // test data
 import { got_characters_data, got_characters_schema, gotCharactersDataMore } from '../../test/data/TestGOT'
@@ -61,7 +62,7 @@ export const DataGridBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
         triggers: {
           replace: {
             items: [{
@@ -97,7 +98,7 @@ export const DataGridColumns = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),
@@ -128,7 +129,7 @@ export const DataGridSchema = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),

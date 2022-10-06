@@ -1,10 +1,6 @@
 import React from 'react';
-import EventHandler from '../../event/Event';
-import { StateManager } from '../../event/StateManager';
 import registerComponents from '../../components/Components';
 import { action } from '@storybook/addon-actions';
-import EventManager from '../../event/Event';
-import ComponentManager from '../../components/Layout/Manager';
 
 const print_config = {
     name: "StoryUtil",
@@ -19,8 +15,8 @@ const print_config = {
     options: {}
 }
 
-export const registerStoryWatchList = (test_handler) => {
-    EventHandler.getInstance().register(test_handler, {
+export const registerStoryWatchList = (eventHandlerInstance, test_handler) => {
+    eventHandlerInstance.register(test_handler, {
         print: {
             schema: {},
             handler: (obj) => {
@@ -31,7 +27,7 @@ export const registerStoryWatchList = (test_handler) => {
     }, {}, print_config);
 }
 
-export const createWatchList = function (test_handler, component_id, event_types) {
+export const createWatchList = function (eventHandlerInstance, test_handler, component_id, event_types) {
     // create watchlist
     const watch_list = [];
     const test_handler_id = component_id + "_handler_id";
@@ -42,11 +38,11 @@ export const createWatchList = function (test_handler, component_id, event_types
             'transform': function (data) { return { event: event_type, data: data }; }
         })
     });
-    EventHandler.getInstance().watch(watch_list);
-    registerStoryWatchList(test_handler_id);
+    eventHandlerInstance.watch(watch_list);
+    registerStoryWatchList(eventHandlerInstance, test_handler_id);
 };
 
-export const createEventTriggers = (component_id, triggers_fn, trigger_data) => {
+export const createEventTriggers = (eventHandlerInstance, component_id, triggers_fn, trigger_data) => {
     const triggers = triggers_fn;
     trigger_data = trigger_data || {}; // default none data
     return (
@@ -58,9 +54,9 @@ export const createEventTriggers = (component_id, triggers_fn, trigger_data) => 
                     if (trigger_data[trigger_id]) { values = trigger_data[trigger_id]; }
                     return (<button key={trigger_id + '_key_' + triggers[trigger_id].name} title={triggers[trigger_id].info.description} onClick={() => {
                         if (typeof (values) === 'function') {
-                            EventHandler.getInstance().addAction(component_id, trigger_id, values());
+                            eventHandlerInstance.addAction(component_id, trigger_id, values());
                         } else {
-                            EventHandler.getInstance().addAction(component_id, trigger_id, values);
+                            eventHandlerInstance.addAction(component_id, trigger_id, values);
                         }
                     }}>{triggers[trigger_id].info.name}</button>)
                 })
@@ -70,16 +66,17 @@ export const createEventTriggers = (component_id, triggers_fn, trigger_data) => 
     )
 }
 
-export const prepStoryComponent = (props, triggers, events, overrides) => {
+export const prepStoryComponent = (componentManagerInstance, props, triggers, events, overrides) => {
     overrides = overrides || {};
-    const component_manager = ComponentManager.getInstance();
+    const component_manager = componentManagerInstance;
+    const state_manager = componentManagerInstance.getStateManager();
     registerComponents(component_manager);
-    StateManager.getInstance().clearAll();
-    StateManager.getInstance().createLayoutState([props]);
+    state_manager.clearAll();
+    state_manager.createLayoutState([props]);
     // attach managers and factories
     props.manager = component_manager;
-    createWatchList(props.id + "_handler", props.id, Object.keys(events));
-    return createEventTriggers(props.id, triggers, overrides.triggers);
+    createWatchList(componentManagerInstance.getEventManager(), props.id + "_handler", props.id, Object.keys(events));
+    return createEventTriggers(componentManagerInstance.getEventManager(), props.id, triggers, overrides.triggers);
 }
 
 export const createStoryArgumentTypesFromSchema = (options_schema) => {

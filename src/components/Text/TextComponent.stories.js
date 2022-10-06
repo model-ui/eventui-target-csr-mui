@@ -6,7 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import TextComponent from './TextComponent';
 import { triggers, events, config } from './TextComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -45,7 +45,7 @@ export const TextBasic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
         triggers: {
           push: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },
           push_front: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },

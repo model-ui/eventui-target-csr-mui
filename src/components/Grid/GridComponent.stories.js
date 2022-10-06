@@ -7,7 +7,7 @@ import { TestTextLatin_SummaryArray, TestTextLatin_LoremIpsumDolorArray, TestTex
 // components
 import { Grid } from './Grid';
 import { triggers, events, config } from './GridComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
@@ -42,7 +42,7 @@ export const GridBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -68,7 +68,7 @@ export const GridText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -141,7 +141,7 @@ export const GridGrid = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Grid {...props} />
     </div>
   );

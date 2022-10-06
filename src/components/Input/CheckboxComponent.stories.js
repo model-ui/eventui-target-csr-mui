@@ -6,6 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import { Checkbox } from './Input';
 import { triggers, events, config } from './CheckboxComponent'
+import { layout } from 'eventfull-core-runtime'
 
 export default {
   title: 'Components/Checkbox',
@@ -42,7 +43,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Checkbox {...props} />
     </div>
   );
@@ -82,7 +83,7 @@ export const Icons = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Checkbox {...props} />
     </div>
   );

@@ -5,8 +5,7 @@ import TextField from '@mui/material/TextField'; // https://material-ui.com/comp
 import { withStyles } from '@mui/styles';
 // event handler
 import EventManager from '../../event/Event';
-// input base
-import { StateInput, events as inputEvents, triggers as inputTriggers, InputBase } from '../../event/InputBase';
+// core
 import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.InputBase.events;

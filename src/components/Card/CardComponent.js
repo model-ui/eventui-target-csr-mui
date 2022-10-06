@@ -10,7 +10,7 @@ import { withStyles } from '@mui/styles';
 import { renderContent } from '../../util/ComponentUtil';
 // event handler
 import EventManager from '../../event/Event';
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+// core
 import { structs } from 'eventfull-core-runtime'
 // utils
 import { isObject } from '../../util/ObjUtil';

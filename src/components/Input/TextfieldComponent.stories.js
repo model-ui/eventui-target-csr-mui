@@ -6,7 +6,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 // components
 import TextfieldComponent from './TextfieldComponent';
 import { triggers, events, config } from './TextfieldComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -35,6 +35,7 @@ export const TextfieldBasic = (args) => {
   return (
     <div>
       {prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), 
         props, triggers, events,
         { triggers: { populate: { value: "My new populated value" } } }
       )}

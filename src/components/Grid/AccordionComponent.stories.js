@@ -7,7 +7,7 @@ import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
 // components
 import { Accordion } from './Grid';
 import { triggers, events, config } from './AccordionComponent'
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
@@ -46,7 +46,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Accordion {...props} />
     </div>
   );
@@ -66,7 +66,7 @@ export const AccordionText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
       <Accordion {...props} />
     </div>
   );

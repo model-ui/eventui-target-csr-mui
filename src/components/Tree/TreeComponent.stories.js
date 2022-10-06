@@ -7,7 +7,7 @@ import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../te
 import { Tree } from './Tree';
 import { triggers, events, config } from './TreeComponent'
 import { example_generators, example_tree_array_items } from './data';
-
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -27,7 +27,7 @@ export const Basic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, { triggers: example_generators })}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, { triggers: example_generators })}
       <Tree {...props} />
     </div>
   );

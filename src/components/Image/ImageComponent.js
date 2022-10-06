@@ -5,7 +5,7 @@ import { withStyles } from '@mui/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+// core
 import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.ListBase.events;
