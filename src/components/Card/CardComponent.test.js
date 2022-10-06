@@ -6,9 +6,11 @@
 import { events, triggers, config } from './CardComponent'
 import { Card } from './Card'
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('CardComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('CardComponent protocol', () => {
 
 describe('Card register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'cards',
     Card,
     triggers,

@@ -6,8 +6,8 @@ import GridComponent, { events as eventsGrid, triggers as triggersGrid, config a
 import GridRowComponent, { events as eventsGridRow, triggers as triggersGridRow, config as configGridRow } from './GridRowComponent'
 import GridColumnComponent, { events as eventsGridColumn, triggers as triggersGridColumn, config as configGridColumn } from './GridColumnComponent'
 import AccordionComponent, { events as eventsAccordion, triggers as triggersAccordion, config as configAccordion } from './AccordionComponent'
-import LayoutComponent, { events as eventsLayout, triggers as triggersLayout, config as configLayout } from '../Layout/LayoutComponent'
-import ViewComponent, { events as eventsView, triggers as triggersView, config as configView } from '../Layout/ViewComponent'
+import LayoutComponent, { events as eventsLayout, triggers as triggersLayout, config as configLayout } from './LayoutComponent'
+import ViewComponent, { events as eventsView, triggers as triggersView, config as configView } from './ViewComponent'
 
 export function View(props) {
     // TODO: wrap in separate component that supports routing

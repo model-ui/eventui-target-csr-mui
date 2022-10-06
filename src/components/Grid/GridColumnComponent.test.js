@@ -5,9 +5,11 @@
 import { GridColumn } from './Grid';
 import { events, triggers, config } from './GridColumnComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('GridColumnComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -38,6 +40,7 @@ describe('GridColumnComponent protocol', () => {
 
 describe('GridColumn register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'grid-columns',
     GridColumn,
     triggers,

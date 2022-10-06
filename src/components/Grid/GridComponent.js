@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+import { layout } from 'eventfull-core-runtime'
+
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
 
 export const options = {
   "id": "grid-columns",
@@ -68,16 +69,16 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateLayout
+  state: layout.LayoutBase.StateLayout
   // styles
 }
 
 const style = (theme) => ({
 });
 
-export const StateGrid = StateLayout;
+export const StateGrid = layout.LayoutBase.StateLayout;
 
-export class GridComponent extends LayoutBase {
+export class GridComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage internal state of avatars
    */

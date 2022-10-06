@@ -6,9 +6,11 @@
 import { Tabs } from './Grid';
 import { events, triggers, config } from './TabsComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('TabsComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -38,6 +40,7 @@ describe('TabsComponent protocol', () => {
 
 describe('Tabs register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'tabs',
     Tabs,
     triggers,

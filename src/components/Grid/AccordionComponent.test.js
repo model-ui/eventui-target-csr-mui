@@ -6,9 +6,11 @@
 import { Accordion } from './Grid';
 import { events, triggers, config } from './AccordionComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('AccordionComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -38,6 +40,7 @@ describe('AccordionComponent protocol', () => {
 
 describe('Accordion register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'accordion',
     Accordion,
     triggers,

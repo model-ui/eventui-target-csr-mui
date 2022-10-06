@@ -6,9 +6,11 @@
 import { config, triggers, events } from './ButtonComponent'
 import { Button } from './Button'
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('ButtonComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('ButtonComponent protocol', () => {
 
 describe('Button register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'buttons',
     Button,
     triggers,

@@ -5,7 +5,8 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ComponentManager from '../../components/Layout/Manager';
+// import ComponentManager from '../../components/Layout/Manager';
+import { structs } from 'eventfull-core-runtime'
 import EventManager from '../../event/Event';
 import { StateManager } from '../../event/StateManager';
 import registerComponents from '../../components/Components';
@@ -16,9 +17,11 @@ const _createComponent = (_Component, component_id, data, options, schema_expect
   if (!manager) {
     throw "TestUtil._createComponent: Manager was not provided through props for component " + component_id;
   } else {
+    /*
     if (manager.constructor.name !== 'ComponentManager') {
       throw "TestUtil._createComponent: Manager was expected to be ComponentManager. Got for '" + manager.constructor.name + "' " + component_id;
     }
+    */
   }
 
 
@@ -46,23 +49,23 @@ const _createComponent = (_Component, component_id, data, options, schema_expect
   }
 }
 
-export const createComponentClassTests = (config, triggers_expected, events_expected, schema_expected, data, options) => {
+export const createComponentClassTests = (componentManagerInstance, config, triggers_expected, events_expected, schema_expected, data, options) => {
   options = options || { render: true }
   data = data || {};
 
   // TODO: run this before each
-  ComponentManager.getInstance().clearAll();
-  StateManager.getInstance().clearAll();
-  EventManager.getInstance().clearAll();
-  registerComponents(ComponentManager.getInstance());
+  componentManagerInstance.clearAll();
+  componentManagerInstance.getStateManager().clearAll();
+  componentManagerInstance.getEventManager().clearAll();
+  registerComponents(componentManagerInstance);
 
-  const c = ComponentManager.getInstance().getComponent(config.type);
+  const c = componentManagerInstance.getComponent(config.type);
   const _Component = c.component;
   const triggers = c.triggers;
   const events = c.events;
   const component_id = config.type + "_id"
-  StateManager.getInstance().clearAll();
-  StateManager.getInstance().createState({
+  componentManagerInstance.getStateManager().clearAll();
+  componentManagerInstance.getStateManager().createState({
     type: config.type,
     data: data,
     id: component_id
@@ -72,10 +75,10 @@ export const createComponentClassTests = (config, triggers_expected, events_expe
     {
       title: component_id + ' trigger registration contains same actions as in component trigger export',
       test: () => {
-        StateManager.getInstance().clearAll();
-        _createComponent(_Component, component_id, data, options, schema_expected, ComponentManager.getInstance());
+        componentManagerInstance.getStateManager().clearAll();
+        _createComponent(_Component, component_id, data, options, schema_expected, componentManagerInstance);
         const trigger_info_events = triggers;
-        const actions = EventManager.getInstance().getCopyOfActions();
+        const actions = componentManagerInstance.getEventManager().getCopyOfActions();
         expect(Object.keys(actions)).toEqual([component_id]);
         // check that we are registering the correct items
         expect(Object.keys(actions[component_id])).toEqual(Object.keys(trigger_info_events));
@@ -101,10 +104,10 @@ export const createComponentClassTests = (config, triggers_expected, events_expe
     }, {
       title: component_id + ' component instance has trigger registration handlers',
       test: () => {
-        StateManager.getInstance().clearAll();
-        _createComponent(_Component, component_id, data, options, schema_expected, ComponentManager.getInstance());
+        componentManagerInstance.getStateManager().clearAll();
+        _createComponent(_Component, component_id, data, options, schema_expected, componentManagerInstance);
         const trigger_info_events = triggers;
-        const actions = EventManager.getInstance().getCopyOfActions();
+        const actions = componentManagerInstance.getEventManager().getCopyOfActions();
         // check that the registered events attributes are defined
         Object.keys(trigger_info_events).forEach((trigger_event, idx) => {
           // check handler
@@ -169,12 +172,12 @@ export const createComponentClassTests = (config, triggers_expected, events_expe
     }, {
       title: component_id + ' option schema is accessible through buildStoreInfo',
       test: () => {
-        /*ComponentManager.getInstance().clearAll();
+        /*componentManagerInstance.clearAll();
         registerComponents();
         */
-        _createComponent(_Component, component_id, data, options, schema_expected, ComponentManager.getInstance());
+        _createComponent(_Component, component_id, data, options, schema_expected, componentManagerInstance);
         // fetch result
-        const store = EventManager.getInstance().collectComponentInventory();
+        const store = componentManagerInstance.getEventManager().collectComponentInventory();
         // should exist
         expect(store).toHaveProperty(config.type);
 
@@ -189,20 +192,20 @@ export const createComponentClassTests = (config, triggers_expected, events_expe
     }, {
       title: component_id + ' schema definition is accessible through getComponentSchema',
       test: () => {
-        const schema = EventManager.getInstance().getComponentSchema(config.type);
+        const schema = componentManagerInstance.getEventManager().getComponentSchema(config.type);
         expect(schema).toEqual(config.options);
       }
     }, {
       title: component_id + ' events definition is accessible through getComponentEventsByType',
       test: () => {
-        const component = EventManager.getInstance().getComponentByType(config.type);
+        const component = componentManagerInstance.getEventManager().getComponentByType(config.type);
         expect(component).not.toEqual(undefined);
         expect(component.actions).toEqual(config.actions);
       }
     }, {
       title: component_id + ' actions definition is accessible through getComponentActionsByType',
       test: () => {
-        const component = EventManager.getInstance().getComponentByType(config.type);
+        const component = componentManagerInstance.getEventManager().getComponentByType(config.type);
         expect(component).not.toEqual(undefined);
         expect(component.events).toEqual(config.events);
       }
@@ -220,17 +223,17 @@ export const createComponentClassTests = (config, triggers_expected, events_expe
 }
 
 
-export const createComponentRegisterTests = (component_type, _Component, triggers, events, config, contains) => {
+export const createComponentRegisterTests = (componentManagerInstance, component_type, _Component, triggers, events, config, contains) => {
   return [
     {
       title: component_type + ' basic registration info',
       test: () => {
-        ComponentManager.getInstance().clearAll();
-        StateManager.getInstance().clearAll();
-        EventManager.getInstance().clearAll();
-        registerComponents(ComponentManager.getInstance());
+        componentManagerInstance.clearAll();
+        componentManagerInstance.getStateManager().clearAll();
+        componentManagerInstance.getEventManager().clearAll();
+        registerComponents(componentManagerInstance);
 
-        const c = ComponentManager.getInstance().getComponent(component_type);
+        const c = componentManagerInstance.getComponent(component_type);
         expect(c).not.toEqual(undefined);
         expect(c.type).toEqual(component_type);
         expect(c.component).toEqual(_Component);
@@ -242,12 +245,12 @@ export const createComponentRegisterTests = (component_type, _Component, trigger
     }, {
       title: component_type + ' configuration registration',
       test: () => {
-        ComponentManager.getInstance().clearAll();
-        StateManager.getInstance().clearAll();
-        EventManager.getInstance().clearAll();
-        registerComponents(ComponentManager.getInstance());
+        componentManagerInstance.clearAll();
+        componentManagerInstance.getStateManager().clearAll();
+        componentManagerInstance.getEventManager().clearAll();
+        registerComponents(componentManagerInstance);
 
-        const c = ComponentManager.getInstance().getComponent(component_type);
+        const c = componentManagerInstance.getComponent(component_type);
         expect(c).not.toEqual(undefined);
         const cfg = c.config;
         expect(cfg).toHaveProperty('type');
@@ -259,12 +262,12 @@ export const createComponentRegisterTests = (component_type, _Component, trigger
     }, {
       title: component_type + ' matches rendered type and schema',
       test: () => {
-        ComponentManager.getInstance().clearAll();
-        StateManager.getInstance().clearAll();
-        EventManager.getInstance().clearAll();
-        registerComponents(ComponentManager.getInstance());
+        componentManagerInstance.clearAll();
+        componentManagerInstance.getStateManager().clearAll();
+        componentManagerInstance.getEventManager().clearAll();
+        registerComponents(componentManagerInstance);
 
-        const c = ComponentManager.getInstance().getComponent(component_type);
+        const c = componentManagerInstance.getComponent(component_type);
         expect(c).not.toEqual(undefined);
         const cfg = c.config;
         expect(cfg).toHaveProperty('type');
@@ -277,12 +280,12 @@ export const createComponentRegisterTests = (component_type, _Component, trigger
       title: component_type + ' tests option schema',
       test: () => {
         if (Object.keys(contains).length) { // test only if we have keys
-          ComponentManager.getInstance().clearAll();
-          StateManager.getInstance().clearAll();
-          EventManager.getInstance().clearAll();
-          registerComponents(ComponentManager.getInstance());
+          componentManagerInstance.clearAll();
+          componentManagerInstance.getStateManager().clearAll();
+          componentManagerInstance.getEventManager().clearAll();
+          registerComponents(componentManagerInstance);
 
-          const c = ComponentManager.getInstance().getComponent(component_type);
+          const c = componentManagerInstance.getComponent(component_type);
           expect(c).not.toEqual(undefined);
           const cfg = c.config;
           const schema_option = cfg.options;
@@ -303,12 +306,12 @@ export const createComponentRegisterTests = (component_type, _Component, trigger
       title: component_type + ' tests containing components',
       test: () => {
         if (Object.keys(contains).length) { // test only if we have keys
-          ComponentManager.getInstance().clearAll();
-          StateManager.getInstance().clearAll();
-          EventManager.getInstance().clearAll();
-          registerComponents(ComponentManager.getInstance());
+          componentManagerInstance.clearAll();
+          componentManagerInstance.getStateManager().clearAll();
+          componentManagerInstance.getEventManager().clearAll();
+          registerComponents(componentManagerInstance);
 
-          const c = ComponentManager.getInstance().getComponent(component_type);
+          const c = componentManagerInstance.getComponent(component_type);
           expect(c).not.toEqual(undefined);
           const cfg = c.config;
           expect(cfg).toHaveProperty('contains');
@@ -346,15 +349,15 @@ function uuidv4() {
   });
 }
 
-export function testEventSequence(module_name, event_name, event_data, trigger_name, callback) {
+export function testEventSequence(componentManagerInstance, module_name, event_name, event_data, trigger_name, callback) {
   const test_name = uuidv4();
-  EventManager.getInstance().register(test_name, {
+  componentManagerInstance.getEventManager().register(test_name, {
     result: {
       schema: {},
       handler: callback
     }
   }, {}, {}); // event and component info not used in test
-  EventManager.getInstance().watch([{
+  componentManagerInstance.getEventManager().watch([{
     'component': { 'id': test_name, 'event': 'result' },
     'trigger': { 'id': module_name, 'action': event_name },
     'transform': function (data) { return data; }
@@ -363,6 +366,6 @@ export function testEventSequence(module_name, event_name, event_data, trigger_n
     'trigger': { 'id': test_name, 'action': 'result' },
     'transform': function (data) { return data; }
   }]);
-  EventManager.getInstance().addEvent(test_name, 'result', event_data, {});
+  componentManagerInstance.getEventManager().addEvent(test_name, 'result', event_data, {});
 
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ComponentManager from '../components/Layout/Manager';
+import { layout } from 'eventfull-core-runtime';
 
 export function renderContent(classes, item) {
     let content = item.content;

@@ -9,7 +9,7 @@
 import Ajv from "ajv";
 import { compareDeep } from "../util/ObjUtil";
 import { StateManager } from './StateManager';
-import ComponentManager from '../components/Layout/Manager';
+import { layout } from 'eventfull-core-runtime';
 import { getTransformFunction } from '../event/Event';
 // schema utils
 import { getSchemaGeneratedData } from "../util/SchemaUtil";

@@ -1,39 +1,51 @@
 import React from 'react';
 
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase';
-import Layouter from '../Layout/Layout';
-import ComponentManager from '../Layout/Manager'
+import { layout } from 'eventfull-core-runtime'
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
+
 export const options = {
-  "id": "layout",
+  "id": "view",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "View options",
+  "description": "View",
   "x-layout": "component",
   "type": "object",
-  "version": 0.1,
-  "properties": {},
+  "properties": {
+    "id": {
+      "readOnly": false,
+      "writeOnly": false,
+      "description": "TBD",
+      "type": "string"
+    },
+    "content": {
+      "title": "content",
+      "description": "TBD",
+      "readOnly": false,
+      "writeOnly": false,
+      "type": "object",
+      "default": {}
+    }
+  },
   "required": []
 }
 
 export const config = {
 
-  name: "Layout",
-  type: "layout",
+  name: "View",
+  type: "view",
   author: "Kjartan Jónsson",
-  description: "LayoutComponent component",
+  description: "ViewComponent component",
   version: 0.1,
   relation: {
     contains: [],
     within: "component" // parent
   },
-  options: options,
-  state: StateLayout
+  options: options
 }
 
 
-export default class LayoutComponent extends LayoutBase {
+export default class ViewComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage layout
    */
@@ -41,6 +53,8 @@ export default class LayoutComponent extends LayoutBase {
   constructor(props) {
     props.config.options = props.config.options || {};
     super(props);
+
+    this.eventDD = this.registerComponent({}, {}, config);
   }
 
   render() {
@@ -56,10 +70,11 @@ export default class LayoutComponent extends LayoutBase {
       // check if we should skip generating this item by request of the caller. Example dont allow card action to have another card
       if (ignore.indexOf(item.type) > -1) { console.warn('Using item type=' + item.type + ' not supported in layout for ' + container_id); continue; }
       // create a component identifier
-      let id = item.id;
+      let id = container_id + (item.id || item.type);
+      console.info("ID: " + id);
       // build the component
       if (item.type === 'layout') {
-        content.push(<Layouter id={id} key={id} classes={classes} data={data} config={item.config} manager={this.props.manager} />);
+        content.push(<layout.Layout.Layouter id={id} key={id} classes={classes} data={data} config={item.config} manager={this.props.manager} />);
       } else {
         const item_data = data || {};
         const params = { id: id, key: id, classes: classes, data: item.data || item_data[item.pick] || item_data, config: item.config, manager: this.props.manager };

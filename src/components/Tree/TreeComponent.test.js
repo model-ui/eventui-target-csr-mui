@@ -6,9 +6,11 @@
 import { events, triggers, config } from './TreeComponent'
 import { Tree } from './Tree';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('TreeComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -38,6 +40,7 @@ describe('TreeComponent protocol', () => {
 
 describe('Tree register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'tree',
     Tree,
     triggers,

@@ -6,9 +6,11 @@
 import { GridRow } from './Grid';
 import { events, triggers, config } from './GridRowComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('GridRowComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('GridRowComponent protocol', () => {
 
 describe('GridRow register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'grid-rows',
     GridRow,
     triggers,

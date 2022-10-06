@@ -6,9 +6,11 @@
 import { Checkbox } from './Input'
 import { events, triggers, config } from './CheckboxComponent'
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('CheckboxComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -38,6 +40,7 @@ describe('CheckboxComponent protocol', () => {
 
 describe('Checkbox register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'checkboxes',
     Checkbox,
     triggers,

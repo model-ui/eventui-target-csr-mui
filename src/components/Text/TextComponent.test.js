@@ -6,9 +6,11 @@
 import { events, triggers, config } from './TextComponent';
 import { Text } from './Text';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('TextComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('TextComponent protocol', () => {
 
 describe('TextInput register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'texts',
     Text,
     triggers,

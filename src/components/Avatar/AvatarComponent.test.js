@@ -8,10 +8,12 @@ import { Avatar } from './Avatar'
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
 
 import { ExampleComponent } from 'eventfull-core-runtime'
-// import { getIcon } from 'eventfull-core-runtime/test' // /util/IconUtil'
+import { structs } from 'eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 describe('AvatarComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -43,6 +45,7 @@ describe('AvatarComponent protocol', () => {
 
 describe('Avatars register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'avatars',
     Avatar,
     triggers,
@@ -57,8 +60,11 @@ describe('ExampleComponents', () => {
   it('is exported', () => {
     expect(ExampleComponent).toBeTruthy()
   })
-  it('is IconUtil exp', () => {
-    // expect(getIcon).toBeTruthy()
+  it('is ListBase', () => {
+    expect(structs).toBeTruthy()
+    expect(structs.ListBase.events).toBeTruthy()
+    expect(structs.ListBase.triggers).toBeTruthy()
+    expect(structs.ListBase.StateList).toBeTruthy()
+    expect(structs.ListBase.ListBase).toBeTruthy()
   })
-  
 })

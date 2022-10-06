@@ -6,9 +6,11 @@
 import { events, triggers, config } from './ImageComponent'
 import { Image } from './Image'
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('ImageComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('ImageComponent protocol', () => {
 
 describe('Image register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'images',
     Image,
     triggers,

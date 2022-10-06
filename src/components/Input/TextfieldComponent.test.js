@@ -6,9 +6,11 @@
 import { events, triggers, config } from './TextfieldComponent';
 import { Textfield } from './Input';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('TextfieldComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -34,6 +36,7 @@ describe('TextfieldComponent protocol', () => {
 
 describe('Textfield register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'textfield',
     Textfield,
     triggers,

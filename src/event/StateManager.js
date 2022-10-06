@@ -1,5 +1,5 @@
 
-import ComponentManager from '../components/Layout/Manager';
+import { layout } from 'eventfull-core-runtime';
 export class StateManager {
 
   static _instance = null;
@@ -36,7 +36,7 @@ export class StateManager {
   }
 
   createManager(state_id, props) {
-    const _component = ComponentManager.getInstance().getComponent(props.type)
+    const _component = layout.Manager.ComponentManager.getInstance().getComponent(props.type)
     if (_component) {
       const config = _component.config;
       let state_inst = this.getManager(state_id);

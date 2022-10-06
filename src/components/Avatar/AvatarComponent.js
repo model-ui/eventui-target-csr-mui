@@ -8,7 +8,7 @@ import { withStyles } from '@mui/styles';
 // common tools
 import getIcon from '../../util/IconUtil';
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'eventfull-core-runtime'
 
 export const options = {
   "id": "avatars",
@@ -43,8 +43,8 @@ export const options = {
   "required": ["shape", "max_count"]
 }
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const config = {
   name: "Avatars",
@@ -57,7 +57,7 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 };
 
 const style = (theme) => ({
@@ -138,7 +138,7 @@ export function AvatarSingleRender(props) {
   }
 }
 
-class AvatarComponent extends ListBase {
+class AvatarComponent extends structs.ListBase.ListBase {
   /**
    * Used to manage internal state of avatars
    */

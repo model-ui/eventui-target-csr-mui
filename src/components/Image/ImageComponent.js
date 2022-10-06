@@ -6,9 +6,10 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'eventfull-core-runtime'
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 
 export const options = {
@@ -72,7 +73,7 @@ export const config = {
     "image": item
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = theme => ({
@@ -87,7 +88,7 @@ const style = theme => ({
     height: 450,
   }
 });
-class ImageComponent extends ListBase {
+class ImageComponent extends structs.ListBase.ListBase {
 
   render() {
     const classes = style;

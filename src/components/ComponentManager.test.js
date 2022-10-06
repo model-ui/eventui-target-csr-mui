@@ -3,16 +3,16 @@
  * Testing DD events and actions integrety
  */
 
-import { keys } from 'lodash';
 import registerComponents from './Components';
-import ComponentManager from './Layout/Manager';
+// import ComponentManager from './Layout/Manager';
+import { layout } from 'eventfull-core-runtime';
 
 describe('Components ', () => {
   test('Registering should all have events and actions', (done) => {
     registerComponents();
     // check for events and actions
     // const comp = ComponentManager.getInstance().getComponents();
-    const inventory = ComponentManager.getInstance().collectComponentInventory();
+    const inventory = layout.Manager.ComponentManager.getInstance().collectComponentInventory();
     const buttons = inventory['buttons'];
 
     expect(Object.keys(buttons.events).length).toBeGreaterThan(4);

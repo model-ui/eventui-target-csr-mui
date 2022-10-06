@@ -6,9 +6,11 @@
 import { Dropdown } from './List';
 import { events, triggers, config } from './DropdownComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { layout } from 'eventfull-core-runtime'
 
 describe('DropdownComponent protocol', () => {
   const tests = createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
     config,
     [
       'submit',
@@ -39,6 +41,7 @@ describe('DropdownComponent protocol', () => {
 
 describe('Dropdown register', () => {
   const tests = createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
     'dropdown',
     Dropdown,
     triggers,
