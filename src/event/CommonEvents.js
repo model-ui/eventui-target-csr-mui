@@ -1,9 +1,8 @@
-import EventManager from '../event/Event';
-
+import { layout } from 'eventfull-core-runtime';
 
 export const registerEventDebugging = () => {
     // add specific solutions
-    EventManager.getInstance().register(
+    layout.Manager.ComponentManager.getInstance().getEventManager().register(
         'console',
         {
             print: {
@@ -19,7 +18,7 @@ export const registerEventDebugging = () => {
 
 export const registerEventApp = () => {
     // add specific solutions
-    EventManager.getInstance().register(
+    layout.Manager.ComponentManager.getInstance().getEventManager().register(
         'app',
         {
             warning: {

@@ -13,12 +13,9 @@ import { registerText } from './Text/Text';
 import { registerTree } from './Tree/Tree';
 import { registerTable, registerDataGrid } from './Table/Table';
 import { registerCheckbox, registerTextfield } from './Input/Input';
-
 import { registerContainer, registerGrid, registerGridColumn, registerGridRow, registerView, registerAccordion, registerTabs, registerLayout } from './Grid/Grid';
+// import { registerDialog, registerPopup } from './Modal/Modal';
 
-/*
-import { registerDialog, registerPopup } from './Modal/Modal';
-*/
 export default function registerComponents(component_manager) {
 
     if (!component_manager) {
@@ -51,7 +48,6 @@ export default function registerComponents(component_manager) {
     registerView(component_manager);
 /*    
     registerContainer(component_manager);
-/*
     registerDialog(component_manager);
     registerPopup(component_manager);
 */

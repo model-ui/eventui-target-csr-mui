@@ -1,7 +1,7 @@
 import AppBase from './AppBase';
-import { layout, dialogs } from './examples/ui-test-layout';
-import { events } from './examples/ui-test-events';
-import { EventAnalyzer } from './event/EventAnalyzer';
+import { layout, dialogs } from './examples/ui-onepage-layout';
+import { events } from './examples/ui-onepage-events';
+// import { EventAnalyzer } from './event/EventAnalyzer';
 
 
 const data_source = []
@@ -33,7 +33,7 @@ class App extends AppBase {
   }
 
   runReport = () => {
-    return EventAnalyzer.getInstance().validateEventActions(events);
+    return {} // EventAnalyzer.getInstance().validateEventActions(events);
   }
 }
 

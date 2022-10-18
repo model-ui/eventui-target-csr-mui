@@ -5,6 +5,6 @@
 
 // export { default as registerComponents } from './components/Components';
 export { default as registerComponents } from './components/Components';
-export { Layout as Layout } from './components/Grid/Grid';
-export { Dialog as Dialog } from './components/Modal/Modal';
-export { World as World } from './components/Hello';
+export { Layout } from './components/Grid/Grid';
+// export { Dialog as Dialog } from './components/Modal/Modal';
+// export { World as World } from './components/Hello';

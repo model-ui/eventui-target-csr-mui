@@ -81,11 +81,12 @@ class DataGridComponent extends structs.ListSchemaBase.ListSchemaBase {
     if (!schema.properties) { schema.properties = {}; }
     for (let prop_name in schema.properties) {
       let prop = schema.properties[prop_name];
+      /*
       let format = undefined; // by default treat everything as string
       if (prop['type'] === 'number') { format = (value) => value; } // FIXME: local locale
       if (prop['format'] === 'date') { format = (value) => value; } // FIXME: handle date 
       if (prop['type'] === 'date-time') { format = (value) => value; } // FIXME: handle date-time
-
+      */
       const column = {
         field: prop_name,
         headerName: prop['title'] || prop_name,
@@ -120,9 +121,7 @@ class DataGridComponent extends structs.ListSchemaBase.ListSchemaBase {
   }
 
   render() {
-    const { classes } = this.props;
     const columns = this.getSchemaColumns(this.state.schema);
-    const key = "id";
     // https://v4.mui.com/api/data-grid/data-grid/
     return (
       <div style={{ height: 400, width: '100%' }}>

@@ -1,5 +1,8 @@
 import React from 'react';
 
+// styles
+import { withStyles } from '@mui/styles';
+
 import { layout } from 'eventfull-core-runtime'
 
 export const events = layout.LayoutBase.events;
@@ -16,8 +19,8 @@ export const options = {
   "required": []
 }
 
-export const config = {
 
+export const config = {
   name: "Layout",
   type: "layout",
   author: "Kjartan Jónsson",
@@ -31,14 +34,16 @@ export const config = {
   state: layout.LayoutBase.StateLayout
 }
 
+const style = (theme) => ({
+});
 
-export default class LayoutComponent extends layout.LayoutBase.LayoutBase {
+class LayoutComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage layout
    */
 
   constructor(props) {
-    props.config.options = props.config.options || {};
+    props.config.options = { ...{}, ...props.config.options }
     super(props);
   }
 
@@ -73,3 +78,5 @@ export default class LayoutComponent extends layout.LayoutBase.LayoutBase {
     return <div>{content}</div>;
   }
 }
+
+export default withStyles(style, { withTheme: true })(LayoutComponent);

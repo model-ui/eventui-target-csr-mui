@@ -2,11 +2,12 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 
+import { layout } from 'eventfull-core-runtime';
+import { event } from 'eventfull-core-runtime';
+
 import { Layout } from './components/Grid/Grid';
-import { Dialog } from './components/Modal/Modal';
-import EventManager, { getTransformFunction } from './event/Event';
-import { StateManager } from './event/StateManager';
-import ComponentManager from './components/Layout/Manager';
+// import { Dialog } from './components/Modal/Modal';
+// import EventManager, { getTransformFunction } from './event/Event';
 
 import registerComponents from './components/Components';
 import { registerEventDebugging, registerEventApp } from './event/CommonEvents';
@@ -28,11 +29,16 @@ class AppBase extends React.Component {
 
   constructor(props) {
     super(props);
+    
+    // get access to manager instances
+    this.stateManager = layout.Manager.ComponentManager.getInstance().getStateManager();
+    this.eventManager = layout.Manager.ComponentManager.getInstance().getEventManager();
+
     // register components
     registerComponents();
 
     // clear all
-    EventManager.getInstance().clearAll();
+    this.eventManager.clearAll(); // EventManager.getInstance().clearAll();
 
     // add specific solutions
     registerEventDebugging();
@@ -44,8 +50,8 @@ class AppBase extends React.Component {
 
     state = state || this.state;
     // register static memory
-    StateManager.getInstance().clearAll();
-    StateManager.getInstance().createState({
+    this.stateManager.clearAll();
+    this.stateManager.createState({
       id: "document_root",
       type: "layout",
       schema: {},
@@ -53,7 +59,7 @@ class AppBase extends React.Component {
       data: this.state.view
     })
     /*
-    StateManager.getInstance().createState({
+    stateManager.createState({
       id: "app",
       type: "app",
       schema: {},
@@ -62,32 +68,33 @@ class AppBase extends React.Component {
     })
     */
     // register the view and then the modals
-    StateManager.getInstance().createLayoutState(state.view);
-    StateManager.getInstance().createLayoutState(state.modal);
+    this.stateManager.createLayoutState(state.view);
+    this.stateManager.createLayoutState(state.modal);
     // register components for memory database
-    StateManager.getInstance().createStates(state.sources);
+    this.stateManager.createStates(state.sources);
     // set dealy since we need to register all the component first
     // this is for being able to apply filtering on registered components
     state.events.forEach(evt => {
       if (typeof (evt.transform) !== 'function') {
-        evt.transform = getTransformFunction(evt);
+        evt.transform =  event.getTransformFunction(evt);
       }
     })
-    EventManager.getInstance().watch(state.events);
+    this.eventManager.watch(state.events);
 
   }
 
   componentDidMount = () => {
+    const eventMgr = this.eventManager;
     // notify ready event
-    EventManager.getInstance().addEvent('app', 'ready', {}, {});
-    window.eventManager = EventManager.getInstance();
+    eventMgr.addEvent('app', 'ready', {}, {});
+    window.eventManager = eventMgr;
     this.renderReady();
   }
 
   renderBody = () => {
 
     const is_ready = true;
-    const manager = ComponentManager.getInstance();
+    const manager = layout.Manager.ComponentManager.getInstance(); // layout.Manager.ComponentManager;
 
     if (is_ready) {
       return (
@@ -101,6 +108,7 @@ class AppBase extends React.Component {
             manager={manager}
           />
           {
+            /*
             this.state.modal.map((itm, idx) => (
               <Dialog
                 key={itm.id}
@@ -111,6 +119,7 @@ class AppBase extends React.Component {
                 manager={manager}
               />
             ))
+            */
           }</div>)
 
     } else {

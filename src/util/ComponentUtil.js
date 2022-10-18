@@ -1,4 +1,3 @@
-import React from 'react';
 import { layout } from 'eventfull-core-runtime';
 
 export function renderContent(classes, item) {

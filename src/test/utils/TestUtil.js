@@ -28,6 +28,7 @@ const _createComponent = (_Component, component_id, data, options, schema_expect
   let _component = null;
   if (options.render) {
     _component = renderer.create(
+      // eslint-disable-next-line react/jsx-pascal-case
       <_Component
         id={component_id}
         key={component_id}

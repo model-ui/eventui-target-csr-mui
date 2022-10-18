@@ -21,7 +21,7 @@ export const Basic = (args) => {
 
   const props = {
     id: 'BasicAccordion_id',
-    type: 'buttons',
+    type: 'accordion',
     data: [{
       'id': 'id1',
       'title': 'Title 1',
@@ -58,7 +58,7 @@ export const AccordionText = (args) => {
 
   const props = {
     id: 'AccordionText_id',
-    type: 'buttons',
+    type: 'accordion',
     data: TestTextLatin_SummaryArray,
     config: { options: args },
     schema: {}
