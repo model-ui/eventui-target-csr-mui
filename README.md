@@ -3,6 +3,9 @@ TODO: make less dumb
 - event full
 - plugin based (any one can create)
 
+yarn upgrade eventfull-core-runtime && yarn run test
+
+
 ## COMPONENT DESIGN
 - components have many children
 - child components can only have one component

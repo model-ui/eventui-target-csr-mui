@@ -69,7 +69,8 @@ export const createComponentClassTests = (componentManagerInstance, config, trig
   componentManagerInstance.getStateManager().createState({
     type: config.type,
     data: data,
-    id: component_id
+    id: component_id,
+    manager: componentManagerInstance
   });
 
   return [

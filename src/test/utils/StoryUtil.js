@@ -70,11 +70,11 @@ export const prepStoryComponent = (componentManagerInstance, props, triggers, ev
     overrides = overrides || {};
     const component_manager = componentManagerInstance;
     const state_manager = componentManagerInstance.getStateManager();
+    // attach managers and factories
+    props.manager = component_manager;
     registerComponents(component_manager);
     state_manager.clearAll();
     state_manager.createLayoutState([props]);
-    // attach managers and factories
-    props.manager = component_manager;
     createWatchList(componentManagerInstance.getEventManager(), props.id + "_handler", props.id, Object.keys(events));
     return createEventTriggers(componentManagerInstance.getEventManager(), props.id, triggers, overrides.triggers);
 }

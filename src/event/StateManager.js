@@ -36,7 +36,8 @@ export class StateManager {
   }
 
   createManager(state_id, props) {
-    const _component = layout.Manager.ComponentManager.getInstance().getComponent(props.type)
+    const componentManagerInstance = layout.Manager.ComponentManager.getInstance();
+    const _component = componentManagerInstance.getComponent(props.type)
     if (_component) {
       const config = _component.config;
       let state_inst = this.getManager(state_id);
@@ -45,6 +46,9 @@ export class StateManager {
         return state_inst;
       } else {
         if (config.state) {
+          // make sure to pass component manager
+          if (!props.manager) { props.manager = componentManagerInstance; }
+          // create the class
           state_inst = this.createStateByClass(config.state, props);
           if (state_inst.registerComponent) {
             state_inst.registerComponent({}, {}, config);
