@@ -5,8 +5,8 @@
 
 import { events, triggers, config } from './TextComponent';
 import { Text } from './Text';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('TextComponent protocol', () => {
   const tests = createComponentClassTests(

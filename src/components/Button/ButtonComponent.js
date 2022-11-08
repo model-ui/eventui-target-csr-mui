@@ -10,7 +10,7 @@ import Icon from '@mui/material/Icon';
 import { makeStyles } from '@mui/styles';
 import { withStyles } from '@mui/styles';
 import EventManager from '../../event/Event';
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 
 export const events = structs.ListBase.events;;
 export const triggers = structs.ListBase.triggers;;
@@ -200,7 +200,7 @@ function ButtonSingle(props) {
 class ButtonComponent extends structs.ListBase.ListBase {
 
   setSelectedId = (id) => {
-    EventManager.getInstance().addEvent(this.props.id, 'selected', { id: id }, null);
+    this.triggerEvent('selected', { id: id }, null);
   }
 
   updateView = function (action, arr, updated, data) {
@@ -219,13 +219,13 @@ class ButtonComponent extends structs.ListBase.ListBase {
     if (items.length === 1) {
       const itm = items[0];
       content.push(<ButtonSingle key={itm.id} data={itm} config={this.props.config} callback={(event, data, evt) => {
-        EventManager.getInstance().addEvent(this.props.id, 'selected', data, evt)
+        this.triggerEvent('selected', data, evt)
       }} />)
     } else {
       if (this.props.config.options.variant === 'fab') { // special case if this is multiple fabs
         items.map(itm =>
           content.push(<ButtonFab key={itm.id} data={itm} config={this.props.config} callback={(event, data, evt) => {
-            EventManager.getInstance().addEvent(this.props.id, 'selected', data, evt)
+            this.triggerEvent('selected', data, evt)
           }} />)
         );
       } else { // return regular button group
@@ -253,7 +253,7 @@ class ButtonComponent extends structs.ListBase.ListBase {
                       target={link.target}
                       // button events 
                       onClick={(evt) => {
-                        EventManager.getInstance().addEvent(this.props.id, 'selected', itm, evt)
+                        this.triggerEvent('selected', itm, evt)
                       }}
                     >
                       <Icon>{getIcon(itm.icon, 'small')}</Icon>
@@ -271,7 +271,7 @@ class ButtonComponent extends structs.ListBase.ListBase {
                       className={classes.button}
                       startIcon={getIcon(itm.icon)}
                       onClick={(evt) => {
-                        EventManager.getInstance().addEvent(this.props.id, 'selected', itm, evt)
+                        this.triggerEvent('selected', itm, evt)
                       }} >{itm.title || itm.label}</Button>)
                 }
               }

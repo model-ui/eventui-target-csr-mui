@@ -5,7 +5,7 @@
 
 import registerComponents from './Components';
 // import ComponentManager from './Layout/Manager';
-import { layout } from 'eventfull-core-runtime';
+import { layout } from '../eventfull-core-runtime'
 
 describe('Components ', () => {
   test('Registering should all have events and actions', (done) => {

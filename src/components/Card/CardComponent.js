@@ -11,7 +11,7 @@ import { renderContent } from '../../util/ComponentUtil';
 // event handler
 import EventManager from '../../event/Event';
 // core
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 // utils
 import { isObject } from '../../util/ObjUtil';
 
@@ -150,7 +150,7 @@ function CardComponentMedia(props) {
   return (
     <CardMedia onClick={event => {
       if (click_event_data) {
-        EventManager.getInstance().addEvent(props.data.component_id, 'selected', click_event_data, null);
+        props.manager.getEventManager().addEvent(props.data.component_id, 'selected', click_event_data, null);
       }
     }} key={props.id + "media"}
       className={props.classes}
@@ -171,18 +171,18 @@ function CardComponentActions(action_content) {
   )
 }
 
-function CardComponentRender(card_id, item, classes, view, component_id) {
+function CardComponentRender(card_id, item, classes, view, component_id, manager) {
   let content = [];
 
   let id = item.id;
   item.component_id = component_id;
   let data = item;
   if (item.title || item.actions) {
-    content.push(<CardComponentHeader id={id + "header"} key={id + "header"} classes={classes.header} data={data} view={item.view} />)
+    content.push(<CardComponentHeader id={id + "header"} key={id + "header"} classes={classes.header} data={data} view={item.view} manager={manager}/>)
   }
 
   if (item.media) {
-    content.push(<CardComponentMedia id={id + "media"} key={id + "media"} classes={classes.media} data={data} />)
+    content.push(<CardComponentMedia id={id + "media"} key={id + "media"} classes={classes.media} data={data} manager={manager}/>)
   }
   /*
   if (item.type === 'content') {
@@ -193,7 +193,7 @@ function CardComponentRender(card_id, item, classes, view, component_id) {
   }
   */
 
-  return <Card id={card_id} key={card_id} className={classes.root} >{content}</Card>;
+  return <Card id={card_id} key={card_id} className={classes.root} manager={manager} >{content}</Card>;
 }
 
 class CardComponent extends structs.ListBase.ListBase {
@@ -212,7 +212,7 @@ class CardComponent extends structs.ListBase.ListBase {
     // {this.data.map((itm_props, idx) => (CardComponentRender(this.props.id + '_card_' + idx, itm_props, classes, this.view)))}
     return (
       <div id={this.container_id} key={this.container_id} className={classes.list}>
-        {this.state.data.map((itm_props, idx) => (CardComponentRender(idx, itm_props, classes, this.view, this.props.id)))}
+        {this.state.data.map((itm_props, idx) => (CardComponentRender(idx, itm_props, classes, this.view, this.props.id, this.props.manager)))}
       </div>
     );
   }

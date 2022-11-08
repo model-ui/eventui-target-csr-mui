@@ -5,8 +5,8 @@
 
 import { Layout } from './Grid';
 import { events, triggers, config } from './LayoutComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime';
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime';
 
 describe('LayoutComponent protocol', () => {
   const tests = createComponentClassTests(

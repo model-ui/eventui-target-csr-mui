@@ -5,11 +5,10 @@
 
 import { events, triggers, config } from './AvatarComponent'
 import { Avatar } from './Avatar'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
 
-import { ExampleComponent } from 'eventfull-core-runtime'
-import { structs } from 'eventfull-core-runtime'
-import { layout } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 describe('AvatarComponent protocol', () => {
   const tests = createComponentClassTests(
@@ -55,16 +54,3 @@ describe('Avatars register', () => {
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
-
-describe('ExampleComponents', () => {
-  it('is exported', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-  it('is ListBase', () => {
-    expect(structs).toBeTruthy()
-    expect(structs.ListBase.events).toBeTruthy()
-    expect(structs.ListBase.triggers).toBeTruthy()
-    expect(structs.ListBase.StateList).toBeTruthy()
-    expect(structs.ListBase.ListBase).toBeTruthy()
-  })
-})

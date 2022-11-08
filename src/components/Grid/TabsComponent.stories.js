@@ -1,14 +1,16 @@
 import React from 'react';
-
+// storybook action handler
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
 // test data
 import { TestTextLatin_SummaryArray, TestIconLatin_SummaryArray } from '../../test/data/TestText.js'
 
 // components
 import { Tabs } from './Grid';
 import { triggers, events, config } from './TabsComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 /// Event addon
 
@@ -45,7 +47,7 @@ export const Basic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Tabs {...props} />
     </div>
   );
@@ -65,7 +67,7 @@ export const BasicText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Tabs {...props} />
     </div>
   );
@@ -85,7 +87,7 @@ export const BasicIcon = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Tabs {...props} />
     </div>
   );

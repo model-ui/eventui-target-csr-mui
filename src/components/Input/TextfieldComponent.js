@@ -6,7 +6,7 @@ import { withStyles } from '@mui/styles';
 // event handler
 import EventManager from '../../event/Event';
 // core
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 
 export const events = structs.InputBase.events;
 export const triggers = structs.InputBase.triggers;
@@ -135,12 +135,12 @@ class TextfieldComponent extends structs.InputBase.InputBase {
 
   onChanged = (evt) => {
     // schema: formatData (only if valid)
-    EventManager.getInstance().addEvent(this.props.id, "changed", { value: evt.target.value }, evt);
+    this.triggerEvent("changed", { value: evt.target.value }, evt);
   }
 
   onKeyUp = (evt) => {
     if (evt.key === "Enter") {
-      EventManager.getInstance().addEvent(this.props.id, "submitted", { value: evt.target.value }, evt);
+      this.triggerEvent("submitted", { value: evt.target.value }, evt);
     }
   }
 

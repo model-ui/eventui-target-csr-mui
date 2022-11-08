@@ -5,8 +5,8 @@
 
 import { config, triggers, events } from './ButtonComponent'
 import { Button } from './Button'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('ButtonComponent protocol', () => {
   const tests = createComponentClassTests(

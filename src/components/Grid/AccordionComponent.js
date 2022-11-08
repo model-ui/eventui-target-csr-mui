@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { withStyles } from '@mui/styles';
 
 //import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 export const events = layout.LayoutBase.events;
 export const triggers = layout.LayoutBase.triggers;

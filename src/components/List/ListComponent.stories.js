@@ -1,12 +1,14 @@
 import React from 'react';
+// storybook action handler
+import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
-
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import registerComponents from '../Components';
 // components
 import { List } from './List';
 import { triggers, events, config } from './ListComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -39,7 +41,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -76,7 +78,7 @@ export const BasicSubtitle = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -122,7 +124,7 @@ export const BasicAvatar = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -171,7 +173,7 @@ export const SecondaryButton = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );

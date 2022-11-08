@@ -1,12 +1,14 @@
 import React from 'react';
+// storybook action handler
+import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
-
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import registerComponents from '../Components';
 // components
 import TextfieldComponent from './TextfieldComponent';
 import { triggers, events, config } from './TextfieldComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 /// Event addon
 export default {
@@ -35,9 +37,7 @@ export const TextfieldBasic = (args) => {
   return (
     <div>
       {prepStoryComponent(
-        layout.Manager.ComponentManager.getInstance(), 
-        props, triggers, events,
-        { triggers: { populate: { value: "My new populated value" } } }
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, { triggers: { populate: { value: "My new populated value" } } }
       )}
       <TextfieldComponent {...props} />
     </div>

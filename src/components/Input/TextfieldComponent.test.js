@@ -5,8 +5,8 @@
 
 import { events, triggers, config } from './TextfieldComponent';
 import { Textfield } from './Input';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('TextfieldComponent protocol', () => {
   const tests = createComponentClassTests(

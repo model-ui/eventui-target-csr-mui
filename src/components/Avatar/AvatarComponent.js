@@ -8,7 +8,7 @@ import { withStyles } from '@mui/styles';
 // common tools
 import getIcon from '../../util/IconUtil';
 
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 
 export const options = {
   "id": "avatars",

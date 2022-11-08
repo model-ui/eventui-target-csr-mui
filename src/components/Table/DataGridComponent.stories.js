@@ -1,12 +1,14 @@
 import React from 'react';
-
+// storybook action handler
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
 
 // components
 import { DataGrid } from './Table';
 import { triggers, events, config } from './DataGridComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 // test data
 import { got_characters_data, got_characters_schema, gotCharactersDataMore } from '../../test/data/TestGOT'
@@ -62,7 +64,7 @@ export const DataGridBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           replace: {
             items: [{
@@ -98,7 +100,7 @@ export const DataGridColumns = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),
@@ -106,8 +108,7 @@ export const DataGridColumns = (args) => {
           select: { id: 2 }, // select Jamie
           replace: { items: [gotCharactersDataMore(2)] }, // replace all with Ramsey with Jamie
         }
-      }
-      )}
+      })}
       <DataGrid {...props} />
     </div>
   );
@@ -129,7 +130,7 @@ export const DataGridSchema = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),

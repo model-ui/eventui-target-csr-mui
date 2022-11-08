@@ -5,7 +5,7 @@ import { withStyles } from '@mui/styles';
 // material ui table
 import { DataGrid } from '@mui/x-data-grid';
 
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 
 export const events = structs.ListSchemaBase.events;
 export const triggers = structs.ListSchemaBase.triggers;

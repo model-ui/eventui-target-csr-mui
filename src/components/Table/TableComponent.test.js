@@ -5,8 +5,8 @@
 
 import { Table } from './Table'
 import { events, triggers, config } from './TableComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('TableComponent protocol', () => {
   const tests = createComponentClassTests(

@@ -1,7 +1,7 @@
 
 // Managers and factories
 // import ComponentManager from './Layout/Manager'
-import { layout } from 'eventfull-core-runtime';
+import { layout } from '../eventfull-core-runtime';
 
 // Components
 import { register as registerAvatar } from './Avatar/Avatar';
@@ -14,7 +14,7 @@ import { registerTree } from './Tree/Tree';
 import { registerTable, registerDataGrid } from './Table/Table';
 import { registerCheckbox, registerTextfield } from './Input/Input';
 import { registerContainer, registerGrid, registerGridColumn, registerGridRow, registerView, registerAccordion, registerTabs, registerLayout } from './Grid/Grid';
-// import { registerDialog, registerPopup } from './Modal/Modal';
+import { registerDialog, registerPopup } from './Modal/Modal';
 
 export default function registerComponents(component_manager) {
 
@@ -46,9 +46,8 @@ export default function registerComponents(component_manager) {
     registerGridRow(component_manager);
     registerLayout(component_manager);
     registerView(component_manager);
-/*    
     registerContainer(component_manager);
     registerDialog(component_manager);
     registerPopup(component_manager);
-*/
+
 }

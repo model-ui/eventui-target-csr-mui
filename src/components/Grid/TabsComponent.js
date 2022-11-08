@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import { withStyles } from '@mui/styles';
 import getIcon from '../../util/IconUtil';
 
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 export const events = layout.LayoutBase.events;
 export const triggers = layout.LayoutBase.triggers;

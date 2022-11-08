@@ -1,4 +1,4 @@
-import { layout } from 'eventfull-core-runtime';
+import { layout } from '../eventfull-core-runtime';
 
 export const registerEventDebugging = () => {
     // add specific solutions

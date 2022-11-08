@@ -8028,12 +8028,6 @@ eventemitter3@^4.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
-eventfull-core-runtime@../eventfull-core-runtime:
-  version "1.0.0"
-  dependencies:
-    font-awesome "^4.7.0"
-    json-schema-faker "^0.5.0-rcv.44"
-
 events@^3.0.0, events@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
@@ -11525,14 +11519,6 @@ json-schema-faker@^0.5.0-rcv.42:
   version "0.5.0-rcv.44"
   resolved "https://registry.yarnpkg.com/json-schema-faker/-/json-schema-faker-0.5.0-rcv.44.tgz#dca9b8f3a844c0426cf4c581cc8d7f4428f29f90"
   integrity sha512-MbDxYFsPXTVMawW1Y6zEU7QhfwsT+ZJ2d+LI8n57Y8+Xw1Cdx1hITgsFTLNOJ1lDMHZqWeXGGgMbc1hW0BGisg==
-  dependencies:
-    json-schema-ref-parser "^6.1.0"
-    jsonpath-plus "^5.1.0"
-
-json-schema-faker@^0.5.0-rcv.44:
-  version "0.5.0-rcv.46"
-  resolved "https://registry.yarnpkg.com/json-schema-faker/-/json-schema-faker-0.5.0-rcv.46.tgz#5f9eff94f463c337a361044a460cc46797ceb053"
-  integrity sha512-Q+sGrxptZfezwm7M9W9VmHT9E8s5fWPCaRC4J2zUjb3CmDsxokiCBdHdS/psu91Tafc/ITv+GtIztGzUVT2zIg==
   dependencies:
     json-schema-ref-parser "^6.1.0"
     jsonpath-plus "^5.1.0"

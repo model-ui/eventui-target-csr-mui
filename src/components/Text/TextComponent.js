@@ -3,7 +3,7 @@ import React from 'react';
 import { withStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
 
-import { structs } from 'eventfull-core-runtime'
+import { structs } from '../../eventfull-core-runtime'
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;

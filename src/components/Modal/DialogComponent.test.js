@@ -1,49 +1,27 @@
 /**
- * ListComponent tests
+ * DialogComponent tests
  * Testing DD events and actions integrety
  */
 
-import { events, triggers, config } from './ListComponent'
-import { List } from './List'
+import { DialogComponent, events, triggers, config } from './DialogComponent'
 import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
 import { layout } from '../../eventfull-core-runtime'
 
-describe('ListComponent protocol', () => {
+describe('DialogComponent protocol', () => {
   const tests = createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
     config,
-    [
-      'submit',
-      'replace',
-      'push',
-      'push_front',
-      'delete',
-      'pop',
-      'pop_front',
-      'select',
-      'clear'
-    ], [
-    'changed',
-    'replacing',
-    'replaced',
-    'submitted',
-    'deleted',
-    'pushing',
-    'pushed',
-    'selected',
-    'deselected',
-    'clearing',
-    'cleared'
-  ]
+    ['show', 'close'],
+    ['showing', 'closed', 'confirmed']
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
 
-describe('List register', () => {
+describe('Dialog register', () => {
   const tests = createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
-    'list',
-    List,
+    'dialog',
+    DialogComponent,
     triggers,
     events,
     config,
@@ -51,4 +29,3 @@ describe('List register', () => {
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
-

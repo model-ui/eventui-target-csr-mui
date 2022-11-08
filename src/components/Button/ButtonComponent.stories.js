@@ -1,12 +1,14 @@
 import React from 'react';
-
+// storybook action handler
+import { action } from '@storybook/addon-actions'
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import registerComponents from '../Components';
 
 // components
 import { Button } from './Button';
 import { triggers, events, config } from './ButtonComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 export default {
   title: 'Components/Buttons',
@@ -29,7 +31,7 @@ export const SingleButton = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -65,7 +67,7 @@ export const TextButtons = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -90,7 +92,7 @@ export const SingleIcon = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -117,7 +119,7 @@ export const SingleIconText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -151,7 +153,7 @@ export const IconButtons = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -192,7 +194,7 @@ export const IconTextButtons = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button  {...props} />
     </div>
   );
@@ -219,7 +221,7 @@ export const SingleFab = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );
@@ -256,7 +258,7 @@ export const SingleFabs = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events)}
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Button {...props} />
     </div>
   );

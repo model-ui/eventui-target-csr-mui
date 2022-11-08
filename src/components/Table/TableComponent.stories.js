@@ -1,12 +1,14 @@
 import React from 'react';
+// storybook action handler
+import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
-
+import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import registerComponents from '../Components';
 // components
 import { Table } from './Table';
 import { triggers, events, config } from './TableComponent'
-import { layout } from 'eventfull-core-runtime'
+import { layout } from '../../eventfull-core-runtime'
 
 // test data
 import { got_characters_data, got_characters_schema, gotCharactersDataMore } from '../../test/data/TestGOT'
@@ -62,7 +64,7 @@ export const TableBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           replace: {
             items: [{
@@ -98,7 +100,7 @@ export const TableColumns = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),
@@ -129,7 +131,7 @@ export const TableReplace = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), props, triggers, events, {
+      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),

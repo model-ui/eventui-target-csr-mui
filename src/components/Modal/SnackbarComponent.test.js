@@ -1,49 +1,34 @@
 /**
- * ListComponent tests
+ * MenuComponent tests
  * Testing DD events and actions integrety
  */
 
-import { events, triggers, config } from './ListComponent'
-import { List } from './List'
+import { events, triggers, config } from './SnackbarComponent'
+import { PopupToaster } from './Modal'
 import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
 import { layout } from '../../eventfull-core-runtime'
 
-describe('ListComponent protocol', () => {
+describe('SnackbarComponent protocol', () => {
   const tests = createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
     config,
     [
-      'submit',
-      'replace',
-      'push',
-      'push_front',
-      'delete',
-      'pop',
-      'pop_front',
-      'select',
-      'clear'
+      'show',
+      'close'
     ], [
-    'changed',
-    'replacing',
-    'replaced',
-    'submitted',
-    'deleted',
-    'pushing',
-    'pushed',
-    'selected',
-    'deselected',
-    'clearing',
-    'cleared'
+    'showing',
+    'closed',
+    'closing'
   ]
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
 
-describe('List register', () => {
+describe('Snackbar register', () => {
   const tests = createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
-    'list',
-    List,
+    'popup-toaster',
+    PopupToaster,
     triggers,
     events,
     config,
@@ -51,4 +36,3 @@ describe('List register', () => {
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
-

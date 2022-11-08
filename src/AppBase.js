@@ -2,8 +2,8 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 
-import { layout } from 'eventfull-core-runtime';
-import { event } from 'eventfull-core-runtime';
+import { layout } from './eventfull-core-runtime';
+import { structs } from './eventfull-core-runtime';
 
 import { Layout } from './components/Grid/Grid';
 // import { Dialog } from './components/Modal/Modal';
@@ -76,7 +76,7 @@ class AppBase extends React.Component {
     // this is for being able to apply filtering on registered components
     state.events.forEach(evt => {
       if (typeof (evt.transform) !== 'function') {
-        evt.transform =  event.getTransformFunction(evt);
+        evt.transform =  structs.getTransformFunction(evt);
       }
     })
     this.eventManager.watch(state.events);

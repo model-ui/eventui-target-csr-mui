@@ -5,8 +5,8 @@
 
 import { Accordion } from './Grid';
 import { events, triggers, config } from './AccordionComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('AccordionComponent protocol', () => {
   const tests = createComponentClassTests(

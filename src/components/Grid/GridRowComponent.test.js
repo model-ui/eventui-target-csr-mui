@@ -5,8 +5,8 @@
 
 import { GridRow } from './Grid';
 import { events, triggers, config } from './GridRowComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
-import { layout } from 'eventfull-core-runtime'
+import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { layout } from '../../eventfull-core-runtime'
 
 describe('GridRowComponent protocol', () => {
   const tests = createComponentClassTests(

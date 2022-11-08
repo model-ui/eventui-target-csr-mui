@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/x_node_modules
+/src/eventfull-core-runtime
 
 # testing
 /coverage
