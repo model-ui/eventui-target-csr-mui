@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 export const events = layout.LayoutBase.events;
 export const triggers = layout.LayoutBase.triggers;

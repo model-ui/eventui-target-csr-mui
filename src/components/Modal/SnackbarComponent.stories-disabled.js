@@ -3,7 +3,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 import registerComponents from '../Components';
 // test utils
-import { createEventTriggers, createWatchList, createLayoutViewArgumentTypes } from '../../eventfull-core-runtime/util/StoryUtil'
+import { createEventTriggers, createWatchList, createLayoutViewArgumentTypes } from 'eventfull-core-runtime'
 
 // components
 import { Snackbar } from './Menu';

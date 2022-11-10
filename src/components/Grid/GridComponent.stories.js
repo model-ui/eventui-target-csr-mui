@@ -3,21 +3,21 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 // test data
 import { TestTextLatin_SummaryArray, TestTextLatin_LoremIpsumDolorArray, TestTextLatin_IpsumDolorArray, TestTextLatin_PellentesquePorttitorArray, TestTextLatin_MaecenasArray } from '../../test/data/TestText.js'
 // components
 import { Grid } from './Grid';
 import { triggers, events, config } from './GridComponent'
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
 export default {
   title: 'Components/Grid',
   component: Grid,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const GridBasic = (args) => {
@@ -45,7 +45,7 @@ export const GridBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -71,7 +71,7 @@ export const GridText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -144,7 +144,7 @@ export const GridGrid = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Grid {...props} />
     </div>
   );

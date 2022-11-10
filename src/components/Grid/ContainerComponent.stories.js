@@ -3,7 +3,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 // test data
 import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
@@ -11,14 +11,14 @@ import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
 // components
 import { Container } from './Grid';
 import { triggers, events, config } from './ContainerComponent'
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 
 export default {
   title: 'Components/Container',
   component: Container,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const Basic = (args) => {
@@ -50,7 +50,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Container {...props} />
     </div>
   );
@@ -72,7 +72,7 @@ export const BasicText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Container {...props} />
     </div>
   );

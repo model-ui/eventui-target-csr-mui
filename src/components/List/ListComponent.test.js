@@ -5,12 +5,16 @@
 
 import { events, triggers, config } from './ListComponent'
 import { List } from './List'
-import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
-import { layout } from '../../eventfull-core-runtime'
+import { util } from 'eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('ListComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'submit',
@@ -40,8 +44,9 @@ describe('ListComponent protocol', () => {
 });
 
 describe('List register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'list',
     List,
     triggers,

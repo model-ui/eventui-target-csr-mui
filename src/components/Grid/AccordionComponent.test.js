@@ -5,12 +5,16 @@
 
 import { Accordion } from './Grid';
 import { events, triggers, config } from './AccordionComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
-import { layout } from '../../eventfull-core-runtime'
+import { util } from 'eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime';
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('AccordionComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,    
     config,
     [
       'submit',
@@ -39,8 +43,9 @@ describe('AccordionComponent protocol', () => {
 });
 
 describe('Accordion register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,    
     'accordion',
     Accordion,
     triggers,

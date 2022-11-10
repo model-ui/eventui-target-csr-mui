@@ -3,18 +3,18 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 // components
 import { List } from './List';
 import { triggers, events, config } from './ListComponent'
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
   title: 'Components/List',
   component: List,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const Basic = (args) => {
@@ -41,7 +41,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -78,7 +78,7 @@ export const BasicSubtitle = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -124,7 +124,7 @@ export const BasicAvatar = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );
@@ -173,7 +173,7 @@ export const SecondaryButton = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <List  {...props} />
     </div>
   );

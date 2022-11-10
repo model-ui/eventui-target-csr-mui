@@ -4,7 +4,9 @@
  */
 import { Grid } from './Grid';
 import { events, triggers, config } from './GridComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { util } from 'eventfull-core-runtime';
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('Some test', () => {
   test('Test', () => { });
@@ -12,7 +14,10 @@ describe('Some test', () => {
 
 /*
 describe('GridComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,    
     config,
     [
       'submit',
@@ -43,6 +48,7 @@ describe('GridComponent protocol', () => {
 
 describe('Grid register', () => {
   const tests = createComponentRegisterTests(
+    registerComponents,
     'grid',
     Grid,
     triggers,

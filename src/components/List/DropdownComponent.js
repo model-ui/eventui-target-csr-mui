@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 // styles
 import { withStyles } from '@mui/styles';
 // core
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;

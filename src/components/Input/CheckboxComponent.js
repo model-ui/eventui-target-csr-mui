@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';// styles
 import { withStyles } from '@mui/styles';
 import getIcon from '../../util/IconUtil';
 
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;

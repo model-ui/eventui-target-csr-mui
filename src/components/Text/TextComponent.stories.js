@@ -3,18 +3,19 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+// import { util } from 'eventfull-core-runtime'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 // components
 import TextComponent from './TextComponent';
 import { triggers, events, config } from './TextComponent'
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
   title: 'Components/Text',
   component: TextComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const TextBasic = (args) => {
@@ -47,7 +48,7 @@ export const TextBasic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events, {
         triggers: {
           push: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },
           push_front: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },

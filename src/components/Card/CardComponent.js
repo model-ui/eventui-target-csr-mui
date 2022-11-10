@@ -11,7 +11,7 @@ import { renderContent } from '../../util/ComponentUtil';
 // event handler
 import EventManager from '../../event/Event';
 // core
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 // utils
 import { isObject } from '../../util/ObjUtil';
 

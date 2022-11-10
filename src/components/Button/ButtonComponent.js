@@ -10,7 +10,7 @@ import Icon from '@mui/material/Icon';
 import { makeStyles } from '@mui/styles';
 import { withStyles } from '@mui/styles';
 import EventManager from '../../event/Event';
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.ListBase.events;;
 export const triggers = structs.ListBase.triggers;;

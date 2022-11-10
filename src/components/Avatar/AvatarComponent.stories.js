@@ -4,19 +4,19 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 
 // components
 import AvatarComponent from './AvatarComponent';
 import { triggers, events, config } from './AvatarComponent'
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
   title: 'Components/Avatar',
   component: AvatarComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const AvatarBasic = (args) => {
@@ -48,7 +48,7 @@ export const AvatarBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <AvatarComponent {...props} />
     </div>
   );

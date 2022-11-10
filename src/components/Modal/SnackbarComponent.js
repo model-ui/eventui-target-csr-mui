@@ -14,7 +14,7 @@ import EventManager from '../../event/Event';
 // import {ComponentMenuItem} from './MenuItem';
 
 // event handler
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 
 export const events = { // copy from DialogComponents

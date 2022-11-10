@@ -7,7 +7,7 @@ import TreeItem from '@mui/lab/TreeItem';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.TreeBase.events;
 export const triggers = structs.TreeBase.triggers;

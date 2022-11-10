@@ -12,7 +12,7 @@ import { withStyles } from '@mui/styles';
 import { AvatarRender } from '../Avatar/AvatarComponent'
 
 // import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;

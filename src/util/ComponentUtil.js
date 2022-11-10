@@ -1,4 +1,4 @@
-import { layout } from '../eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime';
 
 export function renderContent(classes, item) {
     let content = item.content;

@@ -3,19 +3,19 @@ import React from 'react';
 import { action } from '@storybook/addon-actions'
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../eventfull-core-runtime/util/StoryUtil'
+import { util } from 'eventfull-core-runtime'
 import registerComponents from '../Components';
 // components
 import { Dialog } from './Modal';
 import { triggers, events, config } from './DialogComponent'
 
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 /// Event addon
 export default {
   title: 'Components/Dialog',
   component: Dialog,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createStoryArgumentTypesFromSchema(config.options)
 };
 
 export const Basic = (args) => {
@@ -34,7 +34,7 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Dialog {...props} />
     </div>
   );
@@ -76,7 +76,7 @@ export const FormatedText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Dialog {... props } />
     </div>
   );
@@ -405,7 +405,7 @@ export const DialogWithList = (args) => {
 
   const component_inst = (
     <div>
-      {prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(layout.Manager.ComponentManager.getInstance(), action, registerComponents, props, triggers, events)}
       <Dialog {... props } />
     </div>
   );

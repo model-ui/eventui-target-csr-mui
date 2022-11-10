@@ -2,8 +2,8 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 
-import { layout } from './eventfull-core-runtime';
-import { structs } from './eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime';
+import { structs } from 'eventfull-core-runtime';
 
 import { Layout } from './components/Grid/Grid';
 // import { Dialog } from './components/Modal/Modal';

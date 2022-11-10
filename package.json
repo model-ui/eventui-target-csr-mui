@@ -23,6 +23,7 @@
     "ajv": "^8.11.0",
     "babel-loader": "^8.2.2",
     "clsx": "^1.1.1",
+    "eventfull-core-runtime": "../eventfull-core-runtime",
     "font-awesome": "^4.7.0",
     "got": "^11.8.0",
     "http2": "^3.3.7",

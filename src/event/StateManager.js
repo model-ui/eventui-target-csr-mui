@@ -1,5 +1,5 @@
 
-import { layout } from '../eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime';
 export class StateManager {
 
   static _instance = null;

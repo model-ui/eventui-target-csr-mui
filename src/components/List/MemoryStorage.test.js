@@ -4,7 +4,7 @@
  */
 
 import { events, triggers, config } from './MemoryStorage'
-import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
+import { util } from 'eventfull-core-runtime';
 
 describe('Some test', () => {
   test('Test', () => { });

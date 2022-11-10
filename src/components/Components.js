@@ -1,7 +1,7 @@
 
 // Managers and factories
 // import ComponentManager from './Layout/Manager'
-import { layout } from '../eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime';
 
 // Components
 import { register as registerAvatar } from './Avatar/Avatar';

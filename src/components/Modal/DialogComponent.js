@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import { renderContent } from '../../util/ComponentUtil';
 
 // event handler
-import { layout } from '../../eventfull-core-runtime'
+import { layout } from 'eventfull-core-runtime'
 
 export const triggers = {
   show: {

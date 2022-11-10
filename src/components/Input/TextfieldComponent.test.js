@@ -5,12 +5,16 @@
 
 import { events, triggers, config } from './TextfieldComponent';
 import { Textfield } from './Input';
-import { createComponentClassTests, createComponentRegisterTests } from '../../eventfull-core-runtime/util/TestUtil';
-import { layout } from '../../eventfull-core-runtime'
+import { util } from 'eventfull-core-runtime';
+import { layout } from 'eventfull-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('TextfieldComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,    
     config,
     [
       'submit',
@@ -35,8 +39,9 @@ describe('TextfieldComponent protocol', () => {
 });
 
 describe('Textfield register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
+    registerComponents,    
     'textfield',
     Textfield,
     triggers,

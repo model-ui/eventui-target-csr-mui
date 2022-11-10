@@ -6,7 +6,7 @@ import { withStyles } from '@mui/styles';
 // event handler
 import EventManager from '../../event/Event';
 // core
-import { structs } from '../../eventfull-core-runtime'
+import { structs } from 'eventfull-core-runtime'
 
 export const events = structs.InputBase.events;
 export const triggers = structs.InputBase.triggers;
